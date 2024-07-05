@@ -1,0 +1,234 @@
+::ng-deep body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+  background-image: url('../../assets/images/red-1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+}
+
+::ng-deep app-map {
+  display: flex;
+  height: 100vh;
+}
+
+/* Header */
+.header-container {
+  width: 100%;
+  background: radial-gradient(circle at 10% 20%, rgb(238, 56, 56) 0%, rgba(206, 21, 0, 0.92) 90.1%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  width: 10%;
+  height: auto;
+}
+
+/* First section */
+.first-section {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.map-and-info {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.map {
+  height: 80%;
+  width: 70%;
+  margin-right: 20px;
+  border: 2px solid rgb(143, 10, 0);
+}
+
+.info {
+  display: flex;
+  color: white;
+  flex-direction: column;
+}
+
+.category-value-pair {
+  background-color: rgb(255, 91, 79);
+  border: 2px solid rgb(143, 10, 0);
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 7px;
+  text-align: center;
+}
+
+.info-category {
+  font-size: 1.1em;
+}
+
+.info-value {
+  font-size: 1.5em;
+}
+
+/* Scroll */
+.scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  background-color: rgb(255, 91, 79);
+  border: 2px solid rgb(143, 10, 0);
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation-button {
+  background-color: #8F0A00; /* Blue color, adjust as needed */
+  color: white;
+  border: none;
+  padding: 20px 10px;
+  cursor: pointer;
+  margin: 0 10px; /* Adjust margin between buttons */
+  border-radius: 5px;
+}
+
+  .navigation-button:hover {
+    background-color: #420400; /* Darker blue color on hover */
+  }
+
+.current-date {
+  font-size: 30px; /* Adjust font size as needed */
+  margin: 0 20px; /* Adjust margin between buttons and date */
+}
+
+
+/* Loader */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value (last parameter) for transparency */
+  z-index: 9999; /* Ensure it's above everything else */
+}
+
+.lds-ring,
+.lds-ring div {
+  box-sizing: border-box;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  z-index: 9999;
+  color: #ff4500;
+}
+
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid currentColor;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: currentColor transparent transparent transparent;
+  }
+
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* Media query for smaller screens */
+@media (max-width: 900px), (max-height: 500px) {
+  .map-and-info {
+    flex-direction: column;
+  }
+
+  .map {
+    width: 90%;
+    margin: 10px;
+  }
+
+  .info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info-category {
+    font-size: 0.7em;
+  }
+
+  .info-value {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-height: 700px) {
+
+  .info-category {
+    font-size: 0.7em;
+  }
+
+  .info-value {
+    font-size: 0.9em;
+  }
+
+  .navigation-button {
+    padding: 10px 10px;
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fire.mk</title>
+  <link rel="stylesheet" href="home.component.css">
+</head>
+<body>
+
+  <header class="header-container">
+    <div class="logo-container">
+      <img src="../../assets/images/logo.png" alt="Logo" class="logo">
+    </div>
+
+  </header>
+
+  <div class="first-section">
+    <div class="first-section-content">
+
+      <div class="first-section-text">Број на пожари денес во Македонија</div>
+
+      <div class="counter-container">
+        <div class="counter" style="--target: {{ totalDailyFiresValue }};"></div>
+      </div>
+
+      <button class="view-map-btn view-map" (click)="navigateToMap()">Види на мапа</button>
+    </div>
+  </div>
+</body>
+</html>

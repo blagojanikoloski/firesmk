@@ -1,0 +1,135 @@
+::ng-deep body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+  background-image: url('../../assets/images/red-2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+::ng-deep app-home {
+  display: flex;
+  height: 100vh;
+}
+
+/* Header */
+.header-container {
+  width: 100%;
+  background: radial-gradient(circle at 10% 20%, rgb(238, 56, 56) 0%, rgba(206, 21, 0, 0.92) 90.1%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  width: 10%;
+  height: auto;
+}
+
+/* First section */
+.first-section {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-section-content {
+  align-items: left;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.first-section-text {
+  font-size: 4em;
+  margin: 0 0 20px 0;
+  font-family: "Arial Black", sans-serif;
+  background: linear-gradient(to right, rgb(255, 65, 108), rgb(255, 75, 43));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Counter */
+@property --num {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.counter::before {
+  counter-reset: my-counter var(--num);
+  content: counter(my-counter);
+  animation: count 3s ease-in-out forwards;
+  background: linear-gradient( 319.6deg, rgb(243, 0, 79) 20.5%, rgb(255, 236, 68) 110.9% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes count {
+  to {
+    --num: var(--target);
+  }
+}
+
+.counter-container {
+  padding: 20px;
+  font: 700 9rem/1 'Signika', sans-serif;
+}
+
+
+/* View in map button */
+
+.view-map-btn {
+  width: 160px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #830000;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  transition: all .4s ease-in-out;
+}
+
+  .view-map-btn:hover {
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+  }
+
+  .view-map-btn:focus {
+    outline: none;
+  }
+
+  .view-map-btn.view-map {
+    background-image: linear-gradient( to right, #fc6076, #ff9a44, #ef9d43, #e75516 );
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+  }
+
+
+
+@media (max-width: 600px) {
+
+  .first-section-text{
+      font-size:2em;
+  }
+
+  .counter-container {
+      font: 700 5rem/1 'Signika', sans-serif;
+  }
+}
+

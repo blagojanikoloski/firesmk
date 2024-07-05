@@ -1,0 +1,6 @@
+@FiresMk.Server_HostAddress = http://localhost:5185
+
+GET {{FiresMk.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
