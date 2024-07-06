@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:4200",
 "RedirectUrl": "",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "D:\\FINKI\\Diplomska\\fires\\FiresMk\\FiresMk.Server\\..\\firesmk.client",
+"WorkingDirectory": "D:\\FINKI\\Diplomska\\fires\\firesmk\\firesmk.server\\..\\firesmk.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

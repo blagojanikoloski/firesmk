@@ -50,7 +50,21 @@ export class MapComponent implements OnInit{
         (position) => {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
-          this.fetchWeatherDataAndUpdateValues();
+          //this.fetchWeatherDataAndUpdateValues();
+
+          //remove this when you reactivate weatherdata
+          var humanIcon = L.icon({
+            iconUrl: '../../assets/images/human-icon.png',
+            iconSize: [50, 50],  // size of the icon
+            iconAnchor: [16, 32],  // point of the icon which will correspond to marker's location
+            popupAnchor: [0, -64]  // point from which the popup should open relative to the iconAnchor
+          });
+          // Create the marker with the custom icon
+          this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
+            .openPopup();
+
+
+          this.loading = false;
         },
         (error) => {
           console.error('Error getting location:', error);
@@ -74,8 +88,14 @@ export class MapComponent implements OnInit{
         // this.fires = data.fires; // Uncomment and update according to your API response structure
         //console.log('Current latutude: ' + this.latitude + '\n' + 'Current longitude: ' + this.longitude);
 
-        this.currentLocationMarker = L.marker([this.latitude, this.longitude]).addTo(this.map)
-          .bindPopup('Your current location')
+        var humanIcon = L.icon({
+          iconUrl: '../../assets/images/human-icon.png',
+          iconSize: [50, 50],  // size of the icon
+          iconAnchor: [16, 32],  // point of the icon which will correspond to marker's location
+          popupAnchor: [0, -64]  // point from which the popup should open relative to the iconAnchor
+        });
+        // Create the marker with the custom icon
+        this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
           .openPopup();
 
         this.loading = false;

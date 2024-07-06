@@ -1,20 +1,20 @@
 {
   "Version": 1,
-  "Hash": "2zo5sb1P8GkVpN4BkdXdLtnrK6hTxtrQrpNhLPDf59s=",
+  "Hash": "M8frTFMF8Al215Hz1qAH+gouBVuH/r9w4/67PGDpdOQ=",
   "Source": "FiresMk.Server",
   "BasePath": "_content/FiresMk.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "D:\\FINKI\\Diplomska\\fires\\FiresMk\\firesmk.client\\firesmk.client.esproj",
+      "Identity": "D:\\FINKI\\Diplomska\\fires\\firesmk\\firesmk.client\\firesmk.client.esproj",
       "Version": 2,
       "Source": "firesmk.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishProperties": "",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildProperties": "",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],

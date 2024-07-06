@@ -138,3 +138,4 @@ D:\FINKI\Diplomska\fires\FiresMk\FiresMk.Server\obj\Debug\net8.0\refint\FiresMk.
 D:\FINKI\Diplomska\fires\FiresMk\FiresMk.Server\obj\Debug\net8.0\FiresMk.Server.pdb
 D:\FINKI\Diplomska\fires\FiresMk\FiresMk.Server\obj\Debug\net8.0\FiresMk.Server.genruntimeconfig.cache
 D:\FINKI\Diplomska\fires\FiresMk\FiresMk.Server\obj\Debug\net8.0\ref\FiresMk.Server.dll
+D:\FINKI\Diplomska\fires\firesmk\FiresMk.Server\obj\Debug\net8.0\FiresMk.Server.sourcelink.json
