@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
   isForwardDateButtonDisabled: boolean = true;
 
   private fireMarkers: any[] = [];
-
+  fireData: any[] = [];
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
 
@@ -88,6 +88,7 @@ export class MapComponent implements OnInit {
 
     this.apiService.getFiresForDate(this.selectedDate).subscribe(
       (data: any[]) => {
+        this.fireData = data;
         this.addFireMarkersToMap(data);
       },
       error => {
@@ -102,6 +103,7 @@ export class MapComponent implements OnInit {
 
     this.apiService.getFiresForDate(this.selectedDate).subscribe(
       (data: any[]) => {
+        this.fireData = data;
         this.addFireMarkersToMap(data);
       },
       error => {
@@ -126,13 +128,28 @@ export class MapComponent implements OnInit {
 
     // Add markers for each fire event using the custom icon
     fires.forEach(fire => {
-      const fireMarker = L.marker([fire.latitude, fire.longitude], { icon: fireIcon }).addTo(this.map);
+      const fireMarker = L.marker([fire.latitude, fire.longitude], { icon: fireIcon })
+        .addTo(this.map)
+        .bindPopup(this.createFirePopupContent(fire));
       this.fireMarkers.push(fireMarker);
     });
 
     this.numberOfFires = fires.length;
   }
 
+  private createFirePopupContent(fire: any): string {
+    const formattedDatetime = fire.datetime.replace('T', ' ');
+    const roundedTemperature = (fire.temperature - 273.15).toFixed(1);
+    return `
+    <div style="font-size: 16px; line-height: 1.5; color: #333;">
+      <h3 style="font-size: 20px; margin-bottom: 10px;">Детали</h3>
+      <p style="margin: 5px 0;"><strong>Датум:</strong> ${formattedDatetime}</p>
+      <p style="margin: 5px 0;"><strong>Температура:</strong> ${roundedTemperature}°C</p>
+      <p style="margin: 5px 0;"><strong>Латитуда:</strong> ${fire.latitude}</p>
+      <p style="margin: 5px 0;"><strong>Лонгитуда:</strong> ${fire.longitude}</p>
+    </div>
+  `;
+  }
 
   navigateDateBackward() {
     const selectedDate = new Date(this.selectedDate);
