@@ -55,11 +55,11 @@
 
       <div class="navigation">
 
-        <button class="navigation-button" id="backButton">&lt;&lt;</button>
+        <button class="navigation-button" id="backButton" (click)="navigateDateBackward()">&lt;&lt;</button>
 
         <input class="current-date" type="date" [value]="currentDate" (change)="onDateChange($event)">
 
-        <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled">&gt;&gt;</button>
+        <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled" (click)="navigateDateForward()">&gt;&gt;</button>
 
       </div>
 

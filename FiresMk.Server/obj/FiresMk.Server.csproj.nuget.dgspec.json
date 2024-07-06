@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FINKI\\Diplomska\\fires\\FiresMk\\FiresMk.Server\\FiresMk.Server.csproj": {}
+    "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\FiresMk.Server.csproj": {}
   },
   "projects": {
-    "D:\\FINKI\\Diplomska\\fires\\FiresMk\\FiresMk.Server\\FiresMk.Server.csproj": {
+    "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\FiresMk.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FINKI\\Diplomska\\fires\\FiresMk\\FiresMk.Server\\FiresMk.Server.csproj",
+        "projectUniqueName": "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\FiresMk.Server.csproj",
         "projectName": "FiresMk.Server",
-        "projectPath": "D:\\FINKI\\Diplomska\\fires\\FiresMk\\FiresMk.Server\\FiresMk.Server.csproj",
+        "projectPath": "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\FiresMk.Server.csproj",
         "packagesPath": "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\",
-        "outputPath": "D:\\FINKI\\Diplomska\\fires\\FiresMk\\FiresMk.Server\\obj\\",
+        "outputPath": "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

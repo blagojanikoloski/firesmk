@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "2zo5sb1P8GkVpN4BkdXdLtnrK6hTxtrQrpNhLPDf59s=",
+  "Hash": "Cd1Ji+WnPdRCYxRGHpsM0xCKALeGEdrYerYK9EMTwQM=",
   "Source": "FiresMk.Server",
   "BasePath": "_content/FiresMk.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "D:\\FINKI\\Diplomska\\fires\\FiresMk\\firesmk.client\\firesmk.client.esproj",
+      "Identity": "D:\\FINKI\\Diplomska\\git\\firesmk\\firesmk.client\\firesmk.client.esproj",
       "Version": 2,
       "Source": "firesmk.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

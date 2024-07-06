@@ -1,1 +1,2 @@
 D:\FINKI\Diplomska\fires\FiresMk\firesmk.client\obj\Debug\firesmk.client.esproj.CoreCompileInputs.cache
+D:\FINKI\Diplomska\git\firesmk\firesmk.client\obj\Debug\firesmk.client.esproj.CoreCompileInputs.cache

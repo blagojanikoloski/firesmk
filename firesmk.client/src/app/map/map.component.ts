@@ -81,11 +81,7 @@ export class MapComponent implements OnInit{
   }
 
   private setCurrentDate() {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-    const dd = String(today.getDate()).padStart(2, '0');
-    this.currentDate = `${yyyy}-${mm}-${dd}`;
+    this.currentDate = this.formatDate(new Date());
   }
 
   onDateChange(event: any) {
@@ -93,15 +89,38 @@ export class MapComponent implements OnInit{
     this.isForwardDateButtonDisabled = this.checkIfToday(this.currentDate);
   }
 
-  private checkIfToday(date: string): boolean {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    const todayStr = `${yyyy}-${mm}-${dd}`;
-
-    return date === todayStr;
+  navigateDateBackward() {
+    const currentDate = new Date(this.currentDate);
+    currentDate.setDate(currentDate.getDate() - 1);
+    this.updateCurrentDate(currentDate);
   }
+
+  navigateDateForward() {
+    const currentDate = new Date(this.currentDate);
+    currentDate.setDate(currentDate.getDate() + 1);
+    this.updateCurrentDate(currentDate);
+  }
+
+  private updateCurrentDate(date: Date) {
+    this.currentDate = this.formatDate(date);
+    this.onDateChange({ target: { value: this.currentDate } });
+  }
+
+  private checkIfToday(date: string): boolean {
+    const formattedDate = this.formatDate(new Date(date));
+    const today = new Date();
+    const todayFormatted = this.formatDate(today);
+
+    return formattedDate === todayFormatted;
+  }
+
+  private formatDate(date: Date): string {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const dd = String(date.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
 
   fetchWeatherDataAndUpdateValues() {
     this.apiService.getCurrentWeather(this.latitude, this.longitude).subscribe(
