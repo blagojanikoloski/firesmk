@@ -235,7 +235,7 @@
 
 
 /* Media query for smaller screens */
-@media (max-width: 900px), (max-height: 500px) {
+@media (max-width: 900px), (max-height: 800px) {
   .map-and-info {
     flex-direction: column;
   }
@@ -261,7 +261,7 @@
   }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 650px) {
 
   .info-category {
     font-size: 0.7em;
