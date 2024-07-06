@@ -16,6 +16,7 @@ export class MapComponent implements OnInit {
   private currentLocationMarker: any;
   loading: boolean = true;
 
+  showWeatherInfo: boolean = false;
   latitude!: number;
   longitude!: number;
   temperature!: number;
@@ -30,6 +31,7 @@ export class MapComponent implements OnInit {
   isForwardDateButtonDisabled: boolean = true;
 
   private fireMarkers: any[] = [];
+
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
 
@@ -186,6 +188,10 @@ export class MapComponent implements OnInit {
         console.error('Error fetching weather data:', error);
       }
     );
+  }
+
+  toggleWeatherInfo() {
+    this.showWeatherInfo = !this.showWeatherInfo;
   }
 
   private getWindDirection(degrees: number): string {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FiresMk.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f21e0695961eaae041c947bb19266d70cf8fb50d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+371e31330857ae89fb2495cf019ac9c6d5c3a8d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("FiresMk.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FiresMk.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

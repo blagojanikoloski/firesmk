@@ -57,10 +57,16 @@
 }
 
 .map {
-  height: 80%;
-  width: 70%;
+  height: 90%;
+  width: 80%;
   margin-right: 20px;
   border: 2px solid rgb(143, 10, 0);
+}
+
+.info-and-button {
+  flex-direction: column;
+  align-items: center;
+  display:flex;
 }
 
 .info {
@@ -193,6 +199,37 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* View Current Weather Button*/
+.current-weather-btn {
+  width: 160px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #830000;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  transition: all .4s ease-in-out;
+}
+
+  .current-weather-btn:hover {
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+  }
+
+  .current-weather-btn:focus {
+    outline: none;
+  }
+
+  .current-weather-btn.current-weather {
+    background-image: linear-gradient( to right, #fc6076, #ff9a44, #ef9d43, #e75516 );
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+  }
 
 
 

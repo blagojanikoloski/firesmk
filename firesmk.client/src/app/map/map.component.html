@@ -17,53 +17,58 @@
     <div class="logo-container">
       <img src="../../assets/images/logo.png" alt="Fire.mk Logo" class="logo">
       <button id="fetchWeatherButton" (click)="fetchWeatherDataAndUpdateValues()">Fetch Weather Data</button>
-
     </div>
   </header>
   <section class="first-section">
 
     <div class="map-and-info">
       <div id="map" class="map"></div>
-      <div class="info">
-        <div class="category-value-pair">
-          <div class="info-category">Моментална температура</div>
-          <div class="info-value" id="temperatureValue">{{ temperature }}°C</div>
+
+      <div class="info-and-button">
+        <div class="info" *ngIf="showWeatherInfo">
+          <div class="category-value-pair">
+            <div class="info-category">Датум</div>
+            <div class="info-value" id="temperatureValue">{{ todayDate }}</div>
+          </div>
+          <div class="category-value-pair">
+            <div class="info-category">Моментална температура</div>
+            <div class="info-value" id="temperatureValue">{{ temperature }}°C</div>
+          </div>
+          <div class="category-value-pair">
+            <div class="info-category">Брзина на ветар</div>
+            <div class="info-value" id="windSpeedValue">{{ windSpeed }}m/s</div>
+          </div>
+          <div class="category-value-pair">
+            <div class="info-category">Насока на ветар</div>
+            <div class="info-value" id="windDirectionValue">{{ windDirection }}</div>
+          </div>
+          <div class="category-value-pair">
+            <div class="info-category">Влажност на воздух</div>
+            <div class="info-value" id="humidityValue">{{ humidity }}%</div>
+          </div>
+          <div class="category-value-pair">
+            <div class="info-category">Воздушен притисок</div>
+            <div class="info-value" id="airPressureValue">{{ airPressure }}Pa</div>
+          </div>
         </div>
-        <div class="category-value-pair">
-          <div class="info-category">Брзина на ветар</div>
-          <div class="info-value" id="windSpeedValue">{{ windSpeed }}m/s</div>
-        </div>
-        <div class="category-value-pair">
-          <div class="info-category">Насока на ветар</div>
-          <div class="info-value" id="windDirectionValue">{{ windDirection }}</div>
-        </div>
-        <div class="category-value-pair">
-          <div class="info-category">Влажност на воздух</div>
-          <div class="info-value" id="humidityValue">{{ humidity }}%</div>
-        </div>
-        <div class="category-value-pair">
-          <div class="info-category">Воздушен притисок</div>
-          <div class="info-value" id="airPressureValue">{{ airPressure }}Pa</div>
-        </div>
-        <div class="category-value-pair">
-          <div class="info-category">Број на пожари</div>
-          <div class="info-value" id="firesValue">{{ numberOfFires }}</div>
-        </div>
+        <button class="current-weather-btn current-weather" id="toggleWeatherButton" (click)="toggleWeatherInfo()">
+          {{ showWeatherInfo ? 'Скриј' : 'Види моментална клима' }}
+        </button>
       </div>
     </div>
-    <div class="scroll">
 
-      <div class="navigation">
-
-        <button class="navigation-button" id="backButton" (click)="navigateDateBackward()">&lt;&lt;</button>
-
-        <input class="current-date" type="date" [value]="selectedDate" (change)="onDateChange($event)" max="{{ todayDate }}">
-
-        <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled" (click)="navigateDateForward()">&gt;&gt;</button>
-
+      <div class="category-value-pair">
+        <div class="info-category">Број на пожари</div>
+        <div class="info-value" id="firesValue">{{ numberOfFires }}</div>
       </div>
 
-    </div>
+      <div class="scroll">
+        <div class="navigation">
+          <button class="navigation-button" id="backButton" (click)="navigateDateBackward()">&lt;&lt;</button>
+          <input class="current-date" type="date" [value]="selectedDate" (change)="onDateChange($event)" max="{{ todayDate }}">
+          <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled" (click)="navigateDateForward()">&gt;&gt;</button>
+        </div>
+      </div>
   </section>
 </body>
 </html>
