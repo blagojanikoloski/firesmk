@@ -54,9 +54,13 @@
     <div class="scroll">
 
       <div class="navigation">
+
         <button class="navigation-button" id="backButton">&lt;&lt;</button>
-        <span class="current-date" id="currentDate">/</span>
-        <button class="navigation-button" id="forwardButton">&gt;&gt;</button>
+
+        <input class="current-date" type="date" [value]="currentDate" (change)="onDateChange($event)">
+
+        <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled">&gt;&gt;</button>
+
       </div>
 
     </div>

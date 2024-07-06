@@ -25,12 +25,15 @@ export class MapComponent implements OnInit{
   airPressure!: number;
   fires!: number;
 
+  currentDate!: string;
+  isForwardDateButtonDisabled: boolean = true;
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
 
   ngOnInit() {
     this.getLocation();
     this.initMap();
+    this.setCurrentDate();
     setTimeout(() => {
       this.map.invalidateSize(); // Force Leaflet to update its size
     }, 0);
@@ -75,6 +78,29 @@ export class MapComponent implements OnInit{
       console.error('Geolocation is not supported by this browser.');
       // Handle no geolocation support
     }
+  }
+
+  private setCurrentDate() {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const dd = String(today.getDate()).padStart(2, '0');
+    this.currentDate = `${yyyy}-${mm}-${dd}`;
+  }
+
+  onDateChange(event: any) {
+    this.currentDate = event.target.value;
+    this.isForwardDateButtonDisabled = this.checkIfToday(this.currentDate);
+  }
+
+  private checkIfToday(date: string): boolean {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+
+    return date === todayStr;
   }
 
   fetchWeatherDataAndUpdateValues() {
