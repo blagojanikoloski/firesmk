@@ -11,8 +11,8 @@ declare let L: any; // Declare Leaflet library
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit{
-  private map: any; 
+export class MapComponent implements OnInit {
+  private map: any;
   private currentLocationMarker: any;
   loading: boolean = true;
 
@@ -25,7 +25,8 @@ export class MapComponent implements OnInit{
   airPressure!: number;
   fires!: number;
 
-  currentDate!: string;
+  selectedDate!: string;
+  todayDate!: string;
   isForwardDateButtonDisabled: boolean = true;
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
@@ -33,7 +34,7 @@ export class MapComponent implements OnInit{
   ngOnInit() {
     this.getLocation();
     this.initMap();
-    this.setCurrentDate();
+    this.setTodayDate();
     setTimeout(() => {
       this.map.invalidateSize(); // Force Leaflet to update its size
     }, 0);
@@ -80,38 +81,37 @@ export class MapComponent implements OnInit{
     }
   }
 
-  private setCurrentDate() {
-    this.currentDate = this.formatDate(new Date());
+  private setTodayDate() {
+    this.todayDate = this.formatDate(new Date());
+    this.selectedDate = this.todayDate;
   }
 
   onDateChange(event: any) {
-    this.currentDate = event.target.value;
-    this.isForwardDateButtonDisabled = this.checkIfToday(this.currentDate);
+    this.selectedDate = event.target.value;
+    this.isForwardDateButtonDisabled = this.checkIfToday(this.selectedDate);
   }
 
   navigateDateBackward() {
-    const currentDate = new Date(this.currentDate);
-    currentDate.setDate(currentDate.getDate() - 1);
-    this.updateCurrentDate(currentDate);
+    const selectedDate = new Date(this.selectedDate);
+    selectedDate.setDate(selectedDate.getDate() - 1);
+    this.updateSelectedDate(selectedDate);
   }
 
   navigateDateForward() {
-    const currentDate = new Date(this.currentDate);
-    currentDate.setDate(currentDate.getDate() + 1);
-    this.updateCurrentDate(currentDate);
+    const selectedDate = new Date(this.selectedDate);
+    selectedDate.setDate(selectedDate.getDate() + 1);
+    this.updateSelectedDate(selectedDate);
   }
 
-  private updateCurrentDate(date: Date) {
-    this.currentDate = this.formatDate(date);
-    this.onDateChange({ target: { value: this.currentDate } });
+  private updateSelectedDate(date: Date) {
+    this.selectedDate = this.formatDate(date);
+    this.onDateChange({ target: { value: this.selectedDate } });
   }
 
   private checkIfToday(date: string): boolean {
-    const formattedDate = this.formatDate(new Date(date));
+    const selectedDate = new Date(date);
     const today = new Date();
-    const todayFormatted = this.formatDate(today);
-
-    return formattedDate === todayFormatted;
+    return selectedDate.toDateString() === today.toDateString();
   }
 
   private formatDate(date: Date): string {
@@ -120,7 +120,6 @@ export class MapComponent implements OnInit{
     const dd = String(date.getDate()).padStart(2, '0');
     return `${yyyy}-${mm}-${dd}`;
   }
-
 
   fetchWeatherDataAndUpdateValues() {
     this.apiService.getCurrentWeather(this.latitude, this.longitude).subscribe(

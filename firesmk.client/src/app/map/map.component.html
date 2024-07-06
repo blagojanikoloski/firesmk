@@ -57,7 +57,7 @@
 
         <button class="navigation-button" id="backButton" (click)="navigateDateBackward()">&lt;&lt;</button>
 
-        <input class="current-date" type="date" [value]="currentDate" (change)="onDateChange($event)">
+        <input class="current-date" type="date" [value]="selectedDate" (change)="onDateChange($event)" max="{{ todayDate }}">
 
         <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled" (click)="navigateDateForward()">&gt;&gt;</button>
 
