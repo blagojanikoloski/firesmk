@@ -15,6 +15,10 @@ export class ApiService {
   }
 
   getNumberOfFiresToday(): Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}/home/firesToday`);
+    return this.http.get<number>(`${this.baseUrl}/home/numberOfFiresToday`);
+  }
+
+  getFiresForDate(date: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/map/firesForDate?date=${date}`);
   }
 }

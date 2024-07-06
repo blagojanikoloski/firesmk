@@ -83,8 +83,8 @@ namespace FiresMk.Server.Controllers
         }
 
 
-        [HttpGet("firesToday")]
-        public IActionResult GetFiresToday()
+        [HttpGet("numberOfFiresToday")]
+        public IActionResult GetNumberOfFiresToday()
         {
             var today = DateTime.Now.Date;
             int firesToday = _context.Fires.Count(f => f.Datetime.Date == today);

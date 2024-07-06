@@ -23,30 +23,29 @@ export class MapComponent implements OnInit {
   windDirection!: string;
   humidity!: number;
   airPressure!: number;
-  fires!: number;
+  numberOfFires!: number;
 
   selectedDate!: string;
   todayDate!: string;
   isForwardDateButtonDisabled: boolean = true;
+
+  private fireMarkers: any[] = [];
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
 
   ngOnInit() {
     this.getLocation();
     this.initMap();
-    this.setTodayDate();
+    this.setTodayDateAndTodayFires();
     setTimeout(() => {
       this.map.invalidateSize(); // Force Leaflet to update its size
     }, 0);
   }
 
-
   private initMap() {
     this.map = L.map('map').setView([41.6086, 21.7453], 8);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
   }
-
-
 
   private getLocation() {
     if (navigator.geolocation) {
@@ -59,9 +58,9 @@ export class MapComponent implements OnInit {
           //remove this when you reactivate weatherdata
           var humanIcon = L.icon({
             iconUrl: '../../assets/images/human-icon.png',
-            iconSize: [50, 50],  // size of the icon
-            iconAnchor: [16, 32],  // point of the icon which will correspond to marker's location
-            popupAnchor: [0, -64]  // point from which the popup should open relative to the iconAnchor
+            iconSize: [50, 50],  
+            iconAnchor: [16, 32], 
+            popupAnchor: [0, -64] 
           });
           // Create the marker with the custom icon
           this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
@@ -81,15 +80,57 @@ export class MapComponent implements OnInit {
     }
   }
 
-  private setTodayDate() {
+  private setTodayDateAndTodayFires() {
     this.todayDate = this.formatDate(new Date());
     this.selectedDate = this.todayDate;
+
+    this.apiService.getFiresForDate(this.selectedDate).subscribe(
+      (data: any[]) => {
+        this.addFireMarkersToMap(data);
+      },
+      error => {
+        console.error('Error fetching numberOfFires for date:', error);
+      }
+    );
   }
 
   onDateChange(event: any) {
     this.selectedDate = event.target.value;
     this.isForwardDateButtonDisabled = this.checkIfToday(this.selectedDate);
+
+    this.apiService.getFiresForDate(this.selectedDate).subscribe(
+      (data: any[]) => {
+        this.addFireMarkersToMap(data);
+      },
+      error => {
+        console.error('Error fetching numberOfFires for date:', error);
+      }
+    );
+
   }
+
+  private addFireMarkersToMap(fires: any[]) {
+    // Clear existing fire markers
+    this.fireMarkers.forEach(marker => this.map.removeLayer(marker));
+    this.fireMarkers = [];
+
+    // Define custom fire icon
+    const fireIcon = L.icon({
+      iconUrl: '../../assets/images/fire-icon.png',
+      iconSize: [64, 64],     
+      iconAnchor: [16, 32],   
+      popupAnchor: [0, -32]    
+    });
+
+    // Add markers for each fire event using the custom icon
+    fires.forEach(fire => {
+      const fireMarker = L.marker([fire.latitude, fire.longitude], { icon: fireIcon }).addTo(this.map);
+      this.fireMarkers.push(fireMarker);
+    });
+
+    this.numberOfFires = fires.length;
+  }
+
 
   navigateDateBackward() {
     const selectedDate = new Date(this.selectedDate);
@@ -129,16 +170,13 @@ export class MapComponent implements OnInit {
         this.windDirection = this.getWindDirection(data.wind.deg);
         this.humidity = data.main.humidity;
         this.airPressure = data.main.pressure;
-        // this.fires = data.fires; // Uncomment and update according to your API response structure
-        //console.log('Current latutude: ' + this.latitude + '\n' + 'Current longitude: ' + this.longitude);
 
         var humanIcon = L.icon({
           iconUrl: '../../assets/images/human-icon.png',
-          iconSize: [50, 50],  // size of the icon
-          iconAnchor: [16, 32],  // point of the icon which will correspond to marker's location
-          popupAnchor: [0, -64]  // point from which the popup should open relative to the iconAnchor
+          iconSize: [50, 50],  
+          iconAnchor: [16, 32],  
+          popupAnchor: [0, -64]  
         });
-        // Create the marker with the custom icon
         this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
           .openPopup();
 
