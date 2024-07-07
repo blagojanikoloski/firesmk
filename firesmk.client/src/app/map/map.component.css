@@ -12,11 +12,6 @@
   overflow: hidden;
 }
 
-::ng-deep app-map {
-  display: flex;
-  height: 100vh;
-}
-
 /* Header */
 .header-container {
   width: 100%;
@@ -36,13 +31,13 @@
 }
 
 .logo {
-  width: 10%;
+  width: 170px;
   height: auto;
 }
 
 .info-icon {
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   margin: 10px;
   background-image: url('../../assets/images/info-icon.png');
   background-size: contain;
@@ -198,10 +193,7 @@
   font-weight: bold;
 }
 
-
-
 /* Loader */
-
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -262,4 +254,38 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+@media (max-width: 600px) {
+
+  .logo {
+    width: 100px;
+  }
+
+  .date-picker-and-number-of-fires {
+
+    height: 50px;
+
+  }
+
+  .number-of-fires {
+    font-size: 13px;
+  }
+
+  .navigation-button {
+    padding: 10px 5px;
+  }
+
+  .current-date {
+    font-size: 15px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .info {
+    width: 60%;
+  }
+
 }
