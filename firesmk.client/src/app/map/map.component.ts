@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
   private currentLocationMarker: any;
   loading: boolean = true;
 
-  showWeatherInfo: boolean = false;
+  isWeatherInfoVisible: boolean = false;
   latitude!: number;
   longitude!: number;
   temperature!: number;
@@ -60,7 +60,7 @@ export class MapComponent implements OnInit {
           //remove this when you reactivate weatherdata
           var humanIcon = L.icon({
             iconUrl: '../../assets/images/human-icon.png',
-            iconSize: [50, 50],  
+            iconSize: [40, 40],  
             iconAnchor: [16, 32], 
             popupAnchor: [0, -64] 
           });
@@ -134,6 +134,7 @@ export class MapComponent implements OnInit {
       this.fireMarkers.push(fireMarker);
     });
 
+    // Define this date's number of fires
     this.numberOfFires = fires.length;
   }
 
@@ -192,10 +193,11 @@ export class MapComponent implements OnInit {
 
         var humanIcon = L.icon({
           iconUrl: '../../assets/images/human-icon.png',
-          iconSize: [50, 50],  
-          iconAnchor: [16, 32],  
-          popupAnchor: [0, -64]  
+          iconSize: [40, 40],
+          iconAnchor: [16, 32],
+          popupAnchor: [0, -64]
         });
+        // Create the marker with the custom icon
         this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
           .openPopup();
 
@@ -208,7 +210,7 @@ export class MapComponent implements OnInit {
   }
 
   toggleWeatherInfo() {
-    this.showWeatherInfo = !this.showWeatherInfo;
+    this.isWeatherInfoVisible = !this.isWeatherInfoVisible;
   }
 
   private getWindDirection(degrees: number): string {

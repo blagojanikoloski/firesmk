@@ -13,62 +13,58 @@
   <div class="loading-overlay" *ngIf="loading"></div>
   <div class="lds-ring" *ngIf="loading"><div></div><div></div><div></div><div></div></div>
 
+
   <header class="header-container">
     <div class="logo-container">
       <img src="../../assets/images/logo.png" alt="Fire.mk Logo" class="logo">
-      <button id="fetchWeatherButton" (click)="fetchWeatherDataAndUpdateValues()">Fetch Weather Data</button>
+    </div>
+
+    <div class="info-icon" id="info-icon" role="img" aria-label="Info icon"
+         [class.active]="isWeatherInfoVisible" (click)="toggleWeatherInfo()">
     </div>
   </header>
   <section class="first-section">
-
-    <div class="map-and-info">
-      <div id="map" class="map"></div>
-
-      <div class="info-and-button">
-        <div class="info" *ngIf="showWeatherInfo">
-          <div class="category-value-pair">
-            <div class="info-category">Датум</div>
-            <div class="info-value" id="temperatureValue">{{ todayDate }}</div>
-          </div>
-          <div class="category-value-pair">
-            <div class="info-category">Моментална температура</div>
-            <div class="info-value" id="temperatureValue">{{ temperature }}°C</div>
-          </div>
-          <div class="category-value-pair">
-            <div class="info-category">Брзина на ветар</div>
-            <div class="info-value" id="windSpeedValue">{{ windSpeed }}m/s</div>
-          </div>
-          <div class="category-value-pair">
-            <div class="info-category">Насока на ветар</div>
-            <div class="info-value" id="windDirectionValue">{{ windDirection }}</div>
-          </div>
-          <div class="category-value-pair">
-            <div class="info-category">Влажност на воздух</div>
-            <div class="info-value" id="humidityValue">{{ humidity }}%</div>
-          </div>
-          <div class="category-value-pair">
-            <div class="info-category">Воздушен притисок</div>
-            <div class="info-value" id="airPressureValue">{{ airPressure }}Pa</div>
-          </div>
-        </div>
-        <button class="current-weather-btn current-weather" id="toggleWeatherButton" (click)="toggleWeatherInfo()">
-          {{ showWeatherInfo ? 'Скриј' : 'Види моментална клима' }}
-        </button>
+    <div id="map" class="map"></div>
+    <div class="date-picker-and-number-of-fires">
+      <div class="number-of-fires">
+        <div class="info-category">Број на пожари</div>
+        <div class="info-value" id="firesValue" data-category="fires">{{numberOfFires}}</div>
+      </div>
+      <div class="navigation">
+        <button class="navigation-button" id="backButton" (click)="navigateDateBackward()">&lt;&lt;</button>
+        <input class="current-date" type="date" [value]="selectedDate" (change)="onDateChange($event)" max="{{ todayDate }}">
+        <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled" (click)="navigateDateForward()">&gt;&gt;</button>
       </div>
     </div>
 
-      <div class="category-value-pair">
-        <div class="info-category">Број на пожари</div>
-        <div class="info-value" id="firesValue">{{ numberOfFires }}</div>
-      </div>
 
-      <div class="scroll">
-        <div class="navigation">
-          <button class="navigation-button" id="backButton" (click)="navigateDateBackward()">&lt;&lt;</button>
-          <input class="current-date" type="date" [value]="selectedDate" (change)="onDateChange($event)" max="{{ todayDate }}">
-          <button class="navigation-button" id="forwardButton" [disabled]="isForwardDateButtonDisabled" (click)="navigateDateForward()">&gt;&gt;</button>
+
+    <div class="info" [ngClass]="{'visible': isWeatherInfoVisible}">
+      <div class="current-climate-text-and-value-pairs">
+        <div class="current-climate-text">Моментална климатска состојба на Вашата локација</div>
+        <div class="category-value-pair">
+          <div class="info-category">Моментална температура</div>
+          <div class="info-value" id="temperatureValue" data-category="temperature">{{ temperature }}°C</div>
+        </div>
+        <div class="category-value-pair">
+          <div class="info-category">Моментална брзина на ветар</div>
+          <div class="info-value" id="windSpeedValue" data-category="wind-speed">{{ windSpeed }}m/s</div>
+        </div>
+        <div class="category-value-pair">
+          <div class="info-category">Моментална насока на ветар</div>
+          <div class="info-value" id="windDirectionValue" data-category="wind-direction">{{ windDirection }}</div>
+        </div>
+        <div class="category-value-pair">
+          <div class="info-category">Моментална влажност на воздух</div>
+          <div class="info-value" id="humidityValue" data-category="humidity">{{ humidity }}%</div>
+        </div>
+        <div class="category-value-pair">
+          <div class="info-category">Моментален воздушен притисок</div>
+          <div class="info-value" id="airPressureValue" data-category="air-pressure">{{ airPressure }}Pa</div>
         </div>
       </div>
+    </div>
   </section>
+  <script src="map.js"></script>
 </body>
 </html>
