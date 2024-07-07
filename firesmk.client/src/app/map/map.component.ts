@@ -36,27 +36,25 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getLocation();
-    this.initMap();
-    this.setTodayDateAndTodayFires();
-    setTimeout(() => {
-      this.map.invalidateSize(); // Force Leaflet to update its size
-    }, 0);
+    this.initialize();
   }
 
-  private initMap() {
-    this.map = L.map('map').setView([41.6086, 21.7453], 8);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-  }
-
-  private getLocation() {
+  private initialize() {
+    // First get location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
-          //this.fetchWeatherDataAndUpdateValues();
+
+          this.initMap();
+          this.setTodayDateAndTodayFires();
           this.fetchClosestFire(this.latitude, this.longitude);
+          setTimeout(() => {
+            this.map.invalidateSize(); // Force Leaflet to update its size
+          }, 0);
+          //this.fetchWeatherDataAndUpdateValues();
+          
           //remove this when you reactivate weatherdata
           var humanIcon = L.icon({
             iconUrl: '../../assets/images/human-icon.png',
@@ -80,6 +78,11 @@ export class MapComponent implements OnInit {
       console.error('Geolocation is not supported by this browser.');
       // Handle no geolocation support
     }
+  }
+
+  private initMap() {
+    this.map = L.map('map').setView([41.6086, 21.7453], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
   }
 
   private setTodayDateAndTodayFires() {
