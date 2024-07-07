@@ -56,7 +56,7 @@ export class MapComponent implements OnInit {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
           //this.fetchWeatherDataAndUpdateValues();
-
+          this.fetchClosestFire(this.latitude, this.longitude);
           //remove this when you reactivate weatherdata
           var humanIcon = L.icon({
             iconUrl: '../../assets/images/human-icon.png',
@@ -218,4 +218,22 @@ export class MapComponent implements OnInit {
     const index = Math.round(degrees / 45) % 8; // Map degrees to compass direction
     return directions[index];
   }
+
+  fetchClosestFire(latitude: number, longitude: number): void {
+    console.log('Fetching closest fire with coordinates:', latitude, longitude);
+
+    this.apiService.getClosestFire(latitude, longitude).subscribe(
+      (data: any) => {
+        console.log('Closest fire data:', data);
+        if (data.distance < 1000) {
+          alert("Има пожар близу до вас!");
+        }
+      },
+      (error) => {
+        console.error('Error fetching closest fire:', error);
+        // Handle error here
+      }
+    );
+  }
+
 }

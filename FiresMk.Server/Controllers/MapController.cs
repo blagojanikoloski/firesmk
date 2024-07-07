@@ -66,5 +66,51 @@ namespace FiresMk.Server.Controllers
             return Ok(fires);
         }
 
+        [HttpGet("closestFire")]
+        public IActionResult GetClosestFire(double latitude, double longitude)
+        {
+            var today = DateTime.Now.Date;
+
+            var closestFire = _context.Fires
+                .Where(f => f.Datetime.Date == today)
+                .AsEnumerable() // Switch to in-memory processing for distance calculation
+                .Select(f => new
+                {
+                    Fire = f,
+                    Distance = GetDistance(latitude, longitude, f.Latitude, f.Longitude)
+                })
+                .OrderBy(f => f.Distance)
+                .FirstOrDefault();
+
+            if (closestFire == null)
+            {
+                return NotFound("No fires found for today.");
+            }
+
+            return Ok(new
+            {
+                closestFire.Fire,
+                Distance = closestFire.Distance
+            });
+        }
+
+
+        private double GetDistance(double lat1, double lon1, double lat2, double lon2)
+        {
+            var R = 6371e3; // Earth radius in meters
+            var phi1 = lat1 * Math.PI / 180;
+            var phi2 = lat2 * Math.PI / 180;
+            var deltaPhi = (lat2 - lat1) * Math.PI / 180;
+            var deltaLambda = (lon2 - lon1) * Math.PI / 180;
+
+            var a = Math.Sin(deltaPhi / 2) * Math.Sin(deltaPhi / 2) +
+                    Math.Cos(phi1) * Math.Cos(phi2) *
+                    Math.Sin(deltaLambda / 2) * Math.Sin(deltaLambda / 2);
+
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            return R * c; // Distance in meters
+        }
+
     }
 }

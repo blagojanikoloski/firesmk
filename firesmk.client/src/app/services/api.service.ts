@@ -21,4 +21,9 @@ export class ApiService {
   getFiresForDate(date: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/map/firesForDate?date=${date}`);
   }
+
+  getClosestFire(latitude: number, longitude: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/map/closestFire?latitude=${latitude}&longitude=${longitude}`);
+  }
+
 }
