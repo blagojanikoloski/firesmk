@@ -12,8 +12,13 @@ def fetch_fire_data(NASA_API_KEY):
     - DataFrame containing fire data.
     """
     try:
-        url = f'https://firms.modaps.eosdis.nasa.gov/api/country/csv/{NASA_API_KEY}/VIIRS_NOAA21_NRT/MKD/10'
-        df_macedonia = pd.read_csv(url)
+        VIIRS_NOAA20 = f'https://firms.modaps.eosdis.nasa.gov/api/country/csv/{NASA_API_KEY}/VIIRS_NOAA20_NRT/MKD/2'
+        df_VIIRS_NOAA20 = pd.read_csv(VIIRS_NOAA20)
+
+        VIIRS_NOAA21 = f'https://firms.modaps.eosdis.nasa.gov/api/country/csv/{NASA_API_KEY}/VIIRS_NOAA21_NRT/MKD/2'
+        df_VIIRS_NOAA21 = pd.read_csv(VIIRS_NOAA21)
+
+        df_macedonia = pd.concat([df_VIIRS_NOAA20, df_VIIRS_NOAA21]).drop_duplicates(subset=['latitude', 'longitude', 'acq_date'])
 
         return df_macedonia
 
