@@ -41,7 +41,7 @@ namespace FiresMk.Server.Controllers
         }
 
         [HttpGet("run-python-script")]
-        public IActionResult RunPythonScript()
+        public IActionResult RunPythonScriptManually()
         {
             string scriptPath = "Scripts/get_latest_fires.py";
 
@@ -82,6 +82,13 @@ namespace FiresMk.Server.Controllers
                             }
                             // Optionally, you could log or handle duplicate entries here
                         }
+
+                        var dataFetch = new DataFetch
+                        {
+                            LastFireDataFetch = DateTime.Now
+                        };
+
+                        _context.DataFetches.Add(dataFetch);
 
                         // Save changes to the database
                         _context.SaveChanges();
