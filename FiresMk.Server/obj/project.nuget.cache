@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "076Cb5pYIzJ0A4Y3IG2fRg+x33dXq0pbe1zKxAzAcf0EIo1wmFMPjUARIGnodluHNc3yinuKWvdV/WSa4VSVbQ==",
+  "dgSpecHash": "TyIdmLRQ4eGWTPcsPdMJfGb4ICBaavgQ2NBR1n+Rw+d+1x/M15FozwXx+C5OXvYusXssidxqazESEKZ/nwSWow==",
   "success": true,
-  "projectFilePath": "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\FiresMk.Server.csproj",
+  "projectFilePath": "D:\\FINKI\\Diplomska\\git\\firesmk\\firesmk.server\\FiresMk.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
-    "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.6\\microsoft.aspnetcore.spaproxy.8.0.6.nupkg.sha512",
+    "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.7\\microsoft.aspnetcore.spaproxy.8.0.7.nupkg.sha512",
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\microsoft.codeanalysis.common\\4.5.0\\microsoft.codeanalysis.common.4.5.0.nupkg.sha512",

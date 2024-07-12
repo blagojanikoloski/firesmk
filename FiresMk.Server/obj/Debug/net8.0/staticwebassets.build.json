@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Cd1Ji+WnPdRCYxRGHpsM0xCKALeGEdrYerYK9EMTwQM=",
+  "Hash": "gYemAgLn5FQw1oJBLF+vyUAafWyFUyQN+AKaqODZWV4=",
   "Source": "FiresMk.Server",
   "BasePath": "_content/FiresMk.Server",
   "Mode": "Default",
@@ -11,10 +11,10 @@
       "Version": 2,
       "Source": "firesmk.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishProperties": "",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildProperties": "",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],

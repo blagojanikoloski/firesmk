@@ -10,5 +10,7 @@ namespace FiresMk.Server.Data
         }
 
         public DbSet<Fire> Fires { get; set; }
+
+        public DbSet<DataFetch> DataFetches { get; set; }
     }
 }
