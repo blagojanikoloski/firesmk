@@ -1,47 +1,36 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Diagnostics;
-using FiresMk.Server.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using FiresMk.Server.Data;
 using FiresMk.Server.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
-
-namespace FiresMk.Server.Controllers
+namespace FiresMk.Server.Services
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class HomeController : Controller
+    public interface IPythonScriptExecutor
+    {
+        Task RunScriptAsync();
+    }
+
+    public class PythonScriptExecutor : IPythonScriptExecutor
     {
         private readonly string _nasaApiKey;
         private readonly FiresMkContext _context;
-        public HomeController(IConfiguration configuration, FiresMkContext context)
+        private readonly ILogger<PythonScriptExecutor> _logger;
+
+        public PythonScriptExecutor(IConfiguration configuration, FiresMkContext context, ILogger<PythonScriptExecutor> logger)
         {
             _nasaApiKey = configuration.GetValue<string>("NasaApiKey");
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context = context;
+            _logger = logger;
         }
 
-        [HttpGet("latestDataFetch")]
-        public async Task<ActionResult<DataFetch>> GetLatestDataFetch()
-        {
-            var latestDataFetch = await _context.DataFetches
-                .OrderByDescending(df => df.LastFireDataFetch)
-                .FirstOrDefaultAsync();
-
-            if (latestDataFetch == null)
-            {
-                return NotFound();
-            }
-
-            return latestDataFetch;
-        }
-
-        [HttpGet("run-python-script")]
-        public IActionResult RunPythonScript()
+        public async Task RunScriptAsync()
         {
             string scriptPath = "Scripts/get_latest_fires.py";
 
@@ -83,26 +72,24 @@ namespace FiresMk.Server.Controllers
                             // Optionally, you could log or handle duplicate entries here
                         }
 
+                        var dataFetch = new DataFetch
+                        {
+                            LastFireDataFetch = DateTime.Now
+                        };
+
+                        _context.DataFetches.Add(dataFetch);
+
                         // Save changes to the database
                         _context.SaveChanges();
 
-                        return Ok("Fire data processed successfully.");
+                        _logger.LogInformation("Fire data processed successfully.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error executing Python script: {ex.Message}");
+                _logger.LogInformation(500, $"Error executing Python script: {ex.Message}");
             }
-        }
-
-
-        [HttpGet("numberOfFiresToday")]
-        public IActionResult GetNumberOfFiresToday()
-        {
-            var today = DateTime.Now.Date;
-            int firesToday = _context.Fires.Count(f => f.Datetime.Date == today);
-            return Ok(firesToday);
         }
     }
 }

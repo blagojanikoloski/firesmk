@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TyIdmLRQ4eGWTPcsPdMJfGb4ICBaavgQ2NBR1n+Rw+d+1x/M15FozwXx+C5OXvYusXssidxqazESEKZ/nwSWow==",
+  "dgSpecHash": "076Cb5pYIzJ0A4Y3IG2fRg+x33dXq0pbe1zKxAzAcf0EIo1wmFMPjUARIGnodluHNc3yinuKWvdV/WSa4VSVbQ==",
   "success": true,
-  "projectFilePath": "D:\\FINKI\\Diplomska\\git\\firesmk\\firesmk.server\\FiresMk.Server.csproj",
+  "projectFilePath": "D:\\FINKI\\Diplomska\\git\\firesmk\\FiresMk.Server\\FiresMk.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Blagoja Nikoloski\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
