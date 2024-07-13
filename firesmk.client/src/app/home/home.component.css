@@ -117,6 +117,19 @@
   }
 
 
+/* Last update text */
+.last-update {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+  color: #f85f5f;
+  padding: 5px 10px; /* Smaller padding */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 12px; /* Smaller text */
+  font-family: Arial, sans-serif; /* Cleaner font */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
 
 @media (max-width: 600px) {
 

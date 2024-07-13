@@ -26,4 +26,8 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/map/closestFire?latitude=${latitude}&longitude=${longitude}`);
   }
 
+  getLatestDataFetch(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/home/latestDataFetch`);
+  }
+
 }
