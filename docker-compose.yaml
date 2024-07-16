@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./FiresMk.Server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./firesmk.client
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+
+

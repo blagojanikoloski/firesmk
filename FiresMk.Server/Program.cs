@@ -36,7 +36,7 @@ namespace FiresMk.Server
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("https://localhost:4200") // Adjust with your Angular app URL
+                    builder => builder.WithOrigins("http://localhost:4200") // Adjust with your Angular app URL
                                       .AllowAnyHeader()
                                       .AllowAnyMethod());
             });
