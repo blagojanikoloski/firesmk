@@ -38,7 +38,7 @@ namespace FiresMk.Server.Services
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo()
                 {
-                    FileName = "python",
+                    FileName = "python3",
                     Arguments = $"{scriptPath} {_nasaApiKey}",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
@@ -74,7 +74,7 @@ namespace FiresMk.Server.Services
 
                         var dataFetch = new DataFetch
                         {
-                            LastFireDataFetch = DateTime.Now
+                            LastFireDataFetch = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"))
                         };
 
                         _context.DataFetches.Add(dataFetch);
