@@ -1,6 +1,6 @@
 
 using FiresMk.Server.Data;
-using FiresMk.Server.Services;
+//using FiresMk.Server.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace FiresMk.Server
@@ -21,11 +21,11 @@ namespace FiresMk.Server
             // Add HttpClient service
             builder.Services.AddHttpClient();
 
-            // Register the Python script executor as a scoped service
-            builder.Services.AddScoped<IPythonScriptExecutor, PythonScriptExecutor>();
+            //// Register the Python script executor as a scoped service
+            //builder.Services.AddScoped<IPythonScriptExecutor, PythonScriptExecutor>();
 
-            // Register the periodic background service
-            builder.Services.AddHostedService<PeriodicPythonScriptRunner>();
+            //// Register the periodic background service
+            //builder.Services.AddHostedService<PeriodicPythonScriptRunner>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

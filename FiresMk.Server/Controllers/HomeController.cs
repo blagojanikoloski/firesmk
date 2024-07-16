@@ -22,7 +22,7 @@ namespace FiresMk.Server.Controllers
         public HomeController(IConfiguration configuration, FiresMkContext context)
         {
             _nasaApiKey = configuration.GetValue<string>("NasaApiKey");
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context = context;
         }
 
         [HttpGet("latestDataFetch")]
