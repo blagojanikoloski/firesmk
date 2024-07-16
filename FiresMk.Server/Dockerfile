@@ -15,6 +15,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
+# Copy the Scripts directory to the runtime image
+COPY --from=build-env /app/Scripts ./Scripts
+
 # Install Python and required packages
 RUN apt-get update && apt-get install -y python3 python3-pip
 RUN pip3 install pandas argparse --break-system-packages
