@@ -35,10 +35,11 @@ namespace FiresMk.Server
             // Add CORS policy
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:4200") // Adjust with your Angular app URL
-                                      .AllowAnyHeader()
-                                      .AllowAnyMethod());
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder
+                        .AllowAnyOrigin() // Allow requests from any origin
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
             });
 
 
@@ -58,7 +59,7 @@ namespace FiresMk.Server
             app.UseHttpsRedirection();
 
             // Use the CORS policy
-            app.UseCors("AllowSpecificOrigin"); // Added this line
+            app.UseCors("AllowAnyOrigin");
 
 
             app.UseAuthorization();
