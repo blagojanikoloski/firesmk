@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:8080'
+  private baseUrl = 'https://firesmk-backend.azurewebsites.net/'
 
   constructor(private http: HttpClient) { }
 

@@ -53,18 +53,18 @@ export class MapComponent implements OnInit {
           setTimeout(() => {
             this.map.invalidateSize(); // Force Leaflet to update its size
           }, 0);
-          //this.fetchWeatherDataAndUpdateValues();
+          this.fetchWeatherDataAndUpdateValues();
           
           //remove this when you reactivate weatherdata
-          var humanIcon = L.icon({
-            iconUrl: '../../assets/images/human-icon.png',
-            iconSize: [40, 40],  
-            iconAnchor: [16, 32], 
-            popupAnchor: [0, -64] 
-          });
-          // Create the marker with the custom icon
-          this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
-            .openPopup();
+          //var humanIcon = L.icon({
+          //  iconUrl: '../../assets/images/human-icon.png',
+          //  iconSize: [40, 40],  
+          //  iconAnchor: [16, 32], 
+          //  popupAnchor: [0, -64] 
+          //});
+          //// Create the marker with the custom icon
+          //this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
+          //  .openPopup();
 
 
           this.loading = false;

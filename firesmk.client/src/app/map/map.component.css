@@ -105,6 +105,10 @@
   padding: 10px;
 }
 
+  .date-picker-and-number-of-fires.invisible {
+    
+  }
+
 .number-of-fires {
   font-size: 20px;
   text-align: center;
@@ -288,11 +292,17 @@
     font-size: 15px;
     margin: 0;
   }
+
+
 }
 
 @media (max-width: 800px) {
   .info {
     width: 60%;
+  }
+
+  .date-picker-and-number-of-fires.invisible {
+    display: none; /* Shown when .invisible is applied */
   }
 
 }

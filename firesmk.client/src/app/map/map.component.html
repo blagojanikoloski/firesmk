@@ -25,7 +25,7 @@
   </header>
   <section class="first-section">
     <div id="map" class="map"></div>
-    <div class="date-picker-and-number-of-fires">
+    <div class="date-picker-and-number-of-fires" [ngClass]="{'invisible': isWeatherInfoVisible}">
       <div class="number-of-fires">
         <div class="info-category">Број на пожари</div>
         <div class="info-value" id="firesValue" data-category="fires">{{numberOfFires}}</div>
