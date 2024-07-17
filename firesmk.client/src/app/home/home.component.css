@@ -67,14 +67,23 @@
 .counter::before {
   counter-reset: my-counter var(--num);
   content: counter(my-counter);
-  animation: count 3s ease-in-out forwards;
-  background: linear-gradient( 319.6deg, rgb(243, 0, 79) 20.5%, rgb(255, 236, 68) 110.9% );
+  background: linear-gradient( 319.6deg, rgb(243, 0, 79) 20.5%, rgb(255, 236, 68) 110.9%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Full form animation properties */
+  -webkit-animation-name: count;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-name: count;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 @keyframes count {
   to {
+    -webkit-num: var(-webkit-target);
     --num: var(--target);
   }
 }
