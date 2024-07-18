@@ -54,20 +54,7 @@ export class MapComponent implements OnInit {
             this.map.invalidateSize(); // Force Leaflet to update its size
           }, 0);
           this.fetchWeatherDataAndUpdateValues();
-          
-          //remove this when you reactivate weatherdata
-          //var humanIcon = L.icon({
-          //  iconUrl: '../../assets/images/human-icon.png',
-          //  iconSize: [40, 40],  
-          //  iconAnchor: [16, 32], 
-          //  popupAnchor: [0, -64] 
-          //});
-          //// Create the marker with the custom icon
-          //this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
-          //  .openPopup();
-
-
-          this.loading = false;
+                 
         },
         (error) => {
           console.error('Error getting location:', error);
@@ -93,6 +80,7 @@ export class MapComponent implements OnInit {
       (data: any[]) => {
         this.fireData = data;
         this.addFireMarkersToMap(data);
+        this.loading = false;
       },
       error => {
         console.error('Error fetching numberOfFires for date:', error);
@@ -204,7 +192,6 @@ export class MapComponent implements OnInit {
         this.currentLocationMarker = L.marker([this.latitude, this.longitude], { icon: humanIcon }).addTo(this.map)
           .openPopup();
 
-        this.loading = false;
       },
       error => {
         console.error('Error fetching weather data:', error);

@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   totalDailyFiresValue = 0;
   latestDataFetch = 'Се вчитува..';
+  loading: boolean = true;
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {}
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
         const counterElement = document.getElementById('counter');
         if (counterElement) {
           counterElement.textContent = this.totalDailyFiresValue.toString();
+          this.loading = false;
         }
 
       },

@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fire.mk</title>
+  <title>Fires.mk</title>
   <link rel="stylesheet" href="home.component.css">
 </head>
 <body>
+
+  <div class="loading-overlay" *ngIf="loading"></div>
+  <div class="lds-ring" *ngIf="loading"><div></div><div></div><div></div><div></div></div>
 
   <header class="header-container">
     <div class="logo-container">
