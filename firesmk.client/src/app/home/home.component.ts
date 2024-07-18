@@ -11,13 +11,18 @@ import { ApiService } from '../services/api.service';
 export class HomeComponent implements OnInit {
 
   totalDailyFiresValue = 0;
-  latestDataFetch = '/';
+  latestDataFetch = 'Се вчитува..';
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {}
 
   ngOnInit() {
     this.apiService.getNumberOfFiresToday().subscribe(
       (data: any) => {
         this.totalDailyFiresValue = data;
+        const counterElement = document.getElementById('counter');
+        if (counterElement) {
+          counterElement.textContent = this.totalDailyFiresValue.toString();
+        }
+
       },
       error => {
         console.error('Error fetching number of fires today:', error);

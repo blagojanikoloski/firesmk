@@ -305,4 +305,8 @@
     display: none; /* Shown when .invisible is applied */
   }
 
+  .psm {
+    padding-bottom: 100px;
+  }
+
 }

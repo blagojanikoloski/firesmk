@@ -69,7 +69,7 @@ namespace FiresMk.Server.Controllers
         [HttpGet("closestFire")]
         public IActionResult GetClosestFire(double latitude, double longitude)
         {
-            var today = DateTime.Now.Date;
+            var today = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time")).Date;
 
             var closestFire = _context.Fires
                 .Where(f => f.Datetime.Date == today)
