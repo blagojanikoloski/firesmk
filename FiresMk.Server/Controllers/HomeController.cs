@@ -107,7 +107,7 @@ namespace FiresMk.Server.Controllers
         [HttpGet("numberOfFiresToday")]
         public IActionResult GetNumberOfFiresToday()
         {
-            var today = DateTime.Now.Date;
+            var today = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time")).Date;
             int firesToday = _context.Fires.Count(f => f.Datetime.Date == today);
             return Ok(firesToday);
         }
