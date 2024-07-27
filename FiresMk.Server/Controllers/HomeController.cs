@@ -49,7 +49,7 @@ namespace FiresMk.Server.Controllers
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo()
                 {
-                    FileName = "python",
+                    FileName = "python3",
                     Arguments = $"{scriptPath} {_nasaApiKey}",
                     RedirectStandardOutput = true,
                     UseShellExecute = false,

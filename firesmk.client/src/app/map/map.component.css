@@ -310,23 +310,6 @@
     padding-top: 20px;
   }
 
-  .current-climate-text {
-    color: black;
-    margin: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    width: 60%;
-  }
-
-  .category-value-pair {
-    border-bottom: 2px solid rgb(146, 146, 146);
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    color: black;
-    margin: 5px;
-  }
-
   .info-category {
     font-size: 1em;
   }
