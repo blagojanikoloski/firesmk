@@ -20,7 +20,7 @@ COPY --from=build-env /app/Scripts ./Scripts
 
 # Install Python and required packages
 RUN apt-get update && apt-get install -y python3 python3-pip
-RUN pip3 install pandas argparse --break-system-packages
+RUN pip3 install pandas argparse numpy --break-system-packages
 
 # Set entry point
 ENTRYPOINT ["dotnet", "FiresMk.Server.dll"]

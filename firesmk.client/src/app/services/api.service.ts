@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private baseUrl = 'https://firesmk-backend.azurewebsites.net/'
-
+  //private baseUrl = 'https://localhost:7273'
   constructor(private http: HttpClient) { }
 
   getCurrentWeather(latitude: number, longitude: number): Observable<any> {
