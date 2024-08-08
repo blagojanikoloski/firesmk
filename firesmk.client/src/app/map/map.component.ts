@@ -89,6 +89,7 @@ export class MapComponent implements OnInit {
   }
 
   onDateChange(event: any) {
+    this.loading = true;
     this.selectedDate = event.target.value;
     this.isForwardDateButtonDisabled = this.checkIfToday(this.selectedDate);
 
@@ -96,6 +97,7 @@ export class MapComponent implements OnInit {
       (data: any[]) => {
         this.fireData = data;
         this.addFireMarkersToMap(data);
+        this.loading = false;
       },
       error => {
         console.error('Error fetching numberOfFires for date:', error);
